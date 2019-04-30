@@ -24,6 +24,12 @@ prob = hist / 1000001
 log_prob = np.log(prob)
 free_energy = -2.479 * log_prob
 
+plt.plot(times, psis, '.', markersize=0.1)
+plt.show()
+
+plt.plot(times, phis, '.', markersize=0.1)
+plt.show()
+
 plt.contourf(xarray[1:], yarray[1:], free_energy)
 plt.colorbar()
 # plt.contour(xarray[1:], yarray[1:], log_prob)
