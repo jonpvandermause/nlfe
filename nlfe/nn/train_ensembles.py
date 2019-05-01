@@ -23,7 +23,7 @@ def train_net(net, net_name):
     loss_list = []
     order = np.arange(len(train_pts))
 
-    for epoch in range(10):  # loop over the dataset multiple times
+    for epoch in range(10000):  # loop over the dataset multiple times
 
         running_loss = 0.0
         np.random.shuffle(order)
@@ -45,7 +45,7 @@ def train_net(net, net_name):
             # print statistics
             running_loss += loss.item()
 
-        print(running_loss)
+        # print(running_loss)
         loss_list.append(running_loss)
     print('Finished Training')
 
@@ -76,3 +76,17 @@ for n in range(4):
     net_name = 'saved_models/three_layer_'+str(n)
     loss_list = train_net(initial_net, net_name)
     np.save('saved_models/three_layer_loss_'+str(n), loss_list)
+
+# train single layer nets
+for n in range(4):
+    initial_net = nets.OneLayer(20)
+    net_name = 'saved_models/one_layer_20_'+str(n)
+    loss_list = train_net(initial_net, net_name)
+    np.save('saved_models/one_layer_20_loss_'+str(n), loss_list)
+
+# train single layer nets
+for n in range(4):
+    initial_net = nets.OneLayer(10)
+    net_name = 'saved_models/one_layer_10_'+str(n)
+    loss_list = train_net(initial_net, net_name)
+    np.save('saved_models/one_layer_10_loss_'+str(n), loss_list)

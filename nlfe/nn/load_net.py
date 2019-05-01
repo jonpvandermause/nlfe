@@ -1,5 +1,5 @@
 import torch
-from train_network import Net
+from nets import OneLayer, TwoLayer, ThreeLayer
 
-net_ex = torch.load('net_test')
+net_ex = torch.load('saved_models/net_test')
 print(net_ex(torch.tensor([[3., 1.]])))
